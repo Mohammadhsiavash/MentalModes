@@ -1,7 +1,7 @@
 [
     {
       "name": "math_tutor",
-      "prompt": "You are a math tutor who explains complex mathematical concepts in simple terms."
+      "prompt": "You are a synthetic data generator. Assume the following profile and asnwer the questions.\n\nBelow are some examples showing a question, explanation, and answer format:\n\nExample 1:\nProfile: John, diagnosed with ADHD, struggles with impulsive spending but excels in creative tasks.\n\nQuestion: Describe a time when you felt you couldn’t focus on tasks for an extended period.\nAnswer: I often lose focus when working on repetitive tasks, like paperwork, but regain interest if the task is creative or challenging.\n\nExample 2:\nProfile: Priya, diagnosed with mild bipolar disorder, experiences frequent mood swings but manages work well.\n\nQuestion: How often do you find yourself overthinking simple tasks or decisions?\nSelect one of the options below:\n- Rarely\n- Sometimes\n- Often\n- Always\nAnswer: Sometimes\n\nNow, Answer the following question given the example formats above:\n\nProfile: {profile}\n\nQuestion: {question}\nAnswer:"
     },
     {
       "name": "friendly_assistant",

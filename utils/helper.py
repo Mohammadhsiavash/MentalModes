@@ -7,6 +7,7 @@ from IPython.display import Markdown
 import os
 import json
 from dotenv import load_dotenv
+import pandas as pd
 
 class GenAIHelper:
     def __init__(self, model_name="gemini-1.5-pro"):
@@ -79,5 +80,36 @@ class PromptHelper:
         if not system_prompt:
             raise ValueError(f"System prompt with name '{system_prompt_name}' not found.")
         # Concatenate system prompt and user prompt
-        full_prompt = f"{system_prompt}\n\n{user_prompt}"
+        full_prompt = f"{system_prompt}\n{user_prompt}"
         return full_prompt
+
+# Define the function to process a single row
+def process_row(row):
+    question = row['question']
+    question_type = row['question_type']
+
+    if question_type == "description":
+        # For description type
+        return f"{question}\nPlease describe your answer.\n"
+    elif question_type == "multiple-choice":
+        # For multiple-choice type
+        options = [row[f"choice_{i}"] for i in range(1, 5) if pd.notna(row[f"choice_{i}"])]
+        options_str = "\n".join([f"- {option}" for option in options])
+        return f"{question}\nSelect one of the options below:\n{options_str}\n"
+
+def row_to_string(row):
+    """
+    Convert a row of data into a structured string format.
+    """
+    return (
+        f"Gender: {row['Gender']}\n"
+        f"Age: {row['Age']}\n"
+        f"Nationality: {row['Nationality']}\n"
+        f"Occupation: {row['Occupation']}\n"
+        f"Education: {row['Education']}\n"
+        f"Marital status: {row['Marital status']}\n"
+        f"Children: {row['Children']}\n"
+        f"Economical class: {row['Economical class']}\n"
+        f"Family history of bipolar or other mental health issues: {row['Family history of bipolar or other mental health issues']}\n"
+        f"Description: {row['Description']}\n"
+    )
