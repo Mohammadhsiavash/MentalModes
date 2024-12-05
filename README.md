@@ -1,6 +1,6 @@
 # MentalModes
 
-This repository was created for the NEXA Hackathon, exploring the use of AI in the field of mental health. The project primarily utilizes **Google Gemini** for its AI functionalities.
+Exploring the use of AI in the field of mental health. The project primarily utilizes **Google Gemini** for its AI functionalities.
 
 ## Setup
 
